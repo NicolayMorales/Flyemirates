@@ -36,7 +36,7 @@ export class UsuariosService {
   update(usuario: UsuarioModelo): Observable<UsuarioModelo> {
     return this.http.put<UsuarioModelo>(`${this.url}/usuarios/${usuario.id}`, {
       nombre: usuario.nombre,
-      apellidos: usuario.apellidos,
+      apellido: usuario.apellidos,
       telefono: usuario.telefono,
       correo: usuario.correo
     }, {

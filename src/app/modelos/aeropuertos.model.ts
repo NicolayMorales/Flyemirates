@@ -3,9 +3,10 @@ export class AeropuertosModelo{
     nombre?: String;
     ciudad?: string;
     pais?: string;
-    coord_x?: string;
-    coord_y?: string;
-    isLoggedIn?: boolean = false;
-  
+    coordx?: string;
+    coordy?: string;
+    siglas?:string;
+    tipo?:string;
+      
   }
   
