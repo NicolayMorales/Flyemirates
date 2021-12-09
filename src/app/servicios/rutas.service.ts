@@ -13,12 +13,12 @@ export class RutasService {
     url = "http://localhost:3000"
     token: string = ''
   //CREAR RUTAS
-  store(rutas: RutasModelo): Observable<RutasModelo> {
+  store(ruta: RutasModelo): Observable<RutasModelo> {
     return this.http.post<RutasModelo>(`${this.url}/rutas`, {
-      id: rutas.id,
-      origen: rutas.origen,
-      destino: rutas.destino,
-      tiempo_estimado: rutas.tiempo_estimado
+      id: ruta.id,
+      origen: ruta.origen,
+      destino: ruta.destino,
+      tiempo_estimado: ruta.tiempo_estimado
     });
   }
 
@@ -32,12 +32,12 @@ getAll(): Observable<RutasModelo[]>{
 }
 
 //Actualizar un Rutas
-update(rutas: RutasModelo): Observable<RutasModelo> {
-  return this.http.put<RutasModelo>(`${this.url}/rutas/${rutas.id}`, {
-id: rutas.id,
-      origen: rutas.origen,
-      destino: rutas.destino,
-      tiempo_estimado: rutas.tiempo_estimado
+update(ruta: RutasModelo): Observable<RutasModelo> {
+  return this.http.put<RutasModelo>(`${this.url}/rutas/${ruta.id}`, {
+      id: ruta.id,
+      origen: ruta.origen,
+      destino: ruta.destino,
+      tiempo_estimado: ruta.tiempo_estimado
 
   }, {
     headers: new HttpHeaders({

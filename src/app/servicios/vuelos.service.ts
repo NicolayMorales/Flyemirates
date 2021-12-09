@@ -13,16 +13,16 @@ export class VuelosService {
   url = "http://localhost:3000"
   token: string = ''
 //CREAR VUELOS
-store(vuelos: VuelosModelo): Observable<VuelosModelo> {
+store(vuelo: VuelosModelo): Observable<VuelosModelo> {
   return this.http.post<VuelosModelo>(`${this.url}/vuelos`, {
-    id: vuelos.id,
-        fecha_inicio: vuelos.fecha_inicio,
-        hora_inicio: vuelos.hora_inicio,
-        fecha_fin: vuelos.fecha_fin,
-        hora_fin: vuelos.hora_fin,      
-        asientos_vendidos: vuelos.asientos_vendidos,
-        nombre_piloto: vuelos.nombre_piloto,
-        ruta:vuelos.ruta,
+    id: vuelo.id,
+        fecha_inicio: vuelo.fecha_inicio,
+        hora_inicio: vuelo.hora_inicio,
+        fecha_fin: vuelo.fecha_fin,
+        hora_fin: vuelo.hora_fin,      
+        asientos_vendidos: vuelo.asientos_vendidos,
+        nombre_piloto: vuelo.nombre_piloto,
+        ruta:vuelo.ruta,
         
   });
 }
@@ -37,16 +37,16 @@ return this.http.get<VuelosModelo[]>(`${this.url}/vuelos`, {
 }
 
 //Actualizar un Vuelos
-update(vuelos: VuelosModelo): Observable<VuelosModelo> {
-return this.http.put<VuelosModelo>(`${this.url}/vuelos/${vuelos.id}`, {
-  id: vuelos.id,
-        fecha_inicio: vuelos.fecha_inicio,
-        hora_inicio: vuelos.hora_inicio,
-        fecha_fin: vuelos.fecha_fin,
-        hora_fin: vuelos.hora_fin,      
-        asientos_vendidos: vuelos.asientos_vendidos,
-        nombre_piloto: vuelos.nombre_piloto,
-        ruta:vuelos.ruta,
+update(vuelo: VuelosModelo): Observable<VuelosModelo> {
+return this.http.put<VuelosModelo>(`${this.url}/vuelos/${vuelo.id}`, {
+  id: vuelo.id,
+        fecha_inicio: vuelo.fecha_inicio,
+        hora_inicio: vuelo.hora_inicio,
+        fecha_fin: vuelo.fecha_fin,
+        hora_fin: vuelo.hora_fin,      
+        asientos_vendidos: vuelo.asientos_vendidos,
+        nombre_piloto: vuelo.nombre_piloto,
+        ruta:vuelo.ruta,
         
 }, {
   headers: new HttpHeaders({

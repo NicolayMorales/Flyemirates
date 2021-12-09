@@ -2,8 +2,11 @@
     <h3 class="center-align">Editar Rutas</h3>
    
     <form [formGroup]="fgValidacion" class="col s12" (ngSubmit)="edit()">
-      <input formControlName="origen" type="hidden" class="validate">
       <div class="row">
+      <div class="input-field col s6">
+      <input formControlName="origen" type="text" class="validate">
+      <label class="active" for="origen">Origen</label>
+    </div>
         <div class="input-field col s6">
           <input formControlName="destino" type="text" class="validate">
           <label class="active" for="destino">Destino</label>

@@ -13,61 +13,61 @@ export class AeropuertosService {
   url = "http://localhost:3000"
   token: string = ''
   //CREAR AEROPUERTO
-  store(aeropuertos: AeropuertosModelo): Observable<AeropuertosModelo> {
+store(aeropuerto: AeropuertosModelo): Observable<AeropuertosModelo> {
     return this.http.post<AeropuertosModelo>(`${this.url}/aeropuertos`, {
-      id: aeropuertos.id,
-      nombre: aeropuertos.nombre,
-      ciudad: aeropuertos.ciudad,
-      pais: aeropuertos.pais,
-      coordx: aeropuertos.coordx,
-      coordy: aeropuertos.coordy,
-      siglas: aeropuertos.siglas,
-      tipo: aeropuertos.tipo
+      id: aeropuerto.id,
+      nombre: aeropuerto.nombre,
+      ciudad: aeropuerto.ciudad,
+      pais: aeropuerto.pais,
+      coordx: aeropuerto.coordx,
+      coordy: aeropuerto.coordy,
+      siglas: aeropuerto.siglas,
+      tipo: aeropuerto.tipo
 
     });
   }
 
-  //Listar Aeropuertos
-  getAll(): Observable<AeropuertosModelo[]> {
-    return this.http.get<AeropuertosModelo[]>(`${this.url}/aeropuertos`, {
-      headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
+    //Listar Aeropuertos
+    getAll(): Observable<AeropuertosModelo[]>{
+      return this.http.get<AeropuertosModelo[]>(`${this.url}/aeropuertos`, {
+        headers: new HttpHeaders({
+          "Authorization": `Bearer ${this.token}`
+        })
       })
+    }
+  
+    //Actualizar un Aeropuertos
+    update(aeropuerto: AeropuertosModelo): Observable<AeropuertosModelo> {
+      return this.http.put<AeropuertosModelo>(`${this.url}/aeropuertos/${aeropuerto.id}`, {
+        id: aeropuerto.id,
+        nombre: aeropuerto.nombre,
+        ciudad: aeropuerto.ciudad,
+        pais: aeropuerto.pais,
+        coordx: aeropuerto.coordx,
+        coordy: aeropuerto.coordy,
+        siglas: aeropuerto.siglas,
+        tipo: aeropuerto.tipo
+      }, {
+        headers: new HttpHeaders({
+          "Authorization": `Bearer ${this.token}`
+        })
+      });
+    }
+ //Eliminar un Aeropuertos
+ delete(id: string): Observable<AeropuertosModelo[]>{
+  return this.http.delete<AeropuertosModelo[]>(`${this.url}/aeropuerto/${id}`, {
+    headers: new HttpHeaders({
+      "Authorization": `Bearer ${this.token}`
     })
-  }
-
-  //Actualizar un Aeropuertos
-  update(aeropuertos: AeropuertosModelo): Observable<AeropuertosModelo> {
-    return this.http.put<AeropuertosModelo>(`${this.url}/aeropuertos/${aeropuertos.id}`, {
-      id: aeropuertos.id,
-      nombre: aeropuertos.nombre,
-      ciudad: aeropuertos.ciudad,
-      pais: aeropuertos.pais,
-      coordx: aeropuertos.coordx,
-      coordy: aeropuertos.coordy,
-      siglas: aeropuertos.siglas,
-      tipo: aeropuertos.tipo
-    }, {
-      headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
-      })
-    });
-  }
-  //Eliminar un Aeropuertos
-  delete(id: string): Observable<AeropuertosModelo[]> {
-    return this.http.delete<AeropuertosModelo[]>(`${this.url}/aeropuertos/${id}`, {
-      headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
-      })
+  })
+}
+//Consultar un Aeropuertos
+getWithId(id: string): Observable<AeropuertosModelo> {
+  return this.http.get<AeropuertosModelo>(`${this.url}/aeropuertos/${id}`, {
+    headers: new HttpHeaders({
+      "Authorization": `Bearer ${this.token}`
     })
-  }
-  //Consultar un Aeropuertos
-  getWithId(id: string): Observable<AeropuertosModelo> {
-    return this.http.get<AeropuertosModelo>(`${this.url}/aeropuertos/${id}`, {
-      headers: new HttpHeaders({
-        "Authorization": `Bearer ${this.token}`
-      })
-    })
-  }
+})
+}
 
 }

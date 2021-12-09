@@ -7,5 +7,3 @@ export class UsuarioModelo{
     token?: string;
     isLoggedIn?: boolean = false;
   }
-
-  

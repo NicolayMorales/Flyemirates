@@ -10,11 +10,13 @@ import Swal from 'sweetalert2'
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
+  [x: string]: any;
 
   constructor(private fb: FormBuilder,
     private aeropuertosService: AeropuertosService,
     private router: Router) { }
     fgValidacion = this.fb.group({
+      nombre: ['', [Validators.required]],
       ciudad: ['', [Validators.required]],
       pais: ['', [Validators.required]],
       coordx: ['', [Validators.required]],
@@ -26,14 +28,15 @@ export class CreateComponent implements OnInit {
   ngOnInit(): void {
   }
   store(){
-    let aeropuertos = new AeropuertosModelo();
-    aeropuertos.ciudad = this.fgValidacion.controls["ciudad"].value;
-    aeropuertos.pais = this.fgValidacion.controls["pais"].value;
-    aeropuertos.coordx = this.fgValidacion.controls["coordx"].value;
-    aeropuertos.coordy = this.fgValidacion.controls["coordy"].value;
-    aeropuertos.siglas = this.fgValidacion.controls["siglas"].value;
-    aeropuertos.tipo = this.fgValidacion.controls["tipo"].value;
-    this.aeropuertosService.store(aeropuertos).subscribe((data: AeropuertosModelo)=> {
+    let aeropuerto = new AeropuertosModelo();
+    aeropuerto.nombre = this.fgValidacion.controls["nombre"].value;
+    aeropuerto.ciudad = this.fgValidacion.controls["ciudad"].value;
+    aeropuerto.pais = this.fgValidacion.controls["pais"].value;
+    aeropuerto.coordx = this.fgValidacion.controls["coordx"].value;
+    aeropuerto.coordy = this.fgValidacion.controls["coordy"].value;
+    aeropuerto.siglas = this.fgValidacion.controls["siglas"].value;
+    aeropuerto.tipo = this.fgValidacion.controls["tipo"].value;
+    this['aeropuertosService'].store(aeropuerto).subscribe((data: AeropuertosModelo)=> {
       Swal.fire('Creado correctamente!', '', 'success')
       this.router.navigate(['/aeropuertos/get']);
     },
@@ -42,5 +45,4 @@ export class CreateComponent implements OnInit {
       alert("Error en el envio");
     })
   }
-
 }

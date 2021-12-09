@@ -11,6 +11,7 @@ import Swal from 'sweetalert2'
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
+  usuariosService: any;
 
   constructor(private fb: FormBuilder,
     private usuarioService: UsuariosService,
@@ -32,7 +33,7 @@ export class CreateComponent implements OnInit {
     usuario.correo = this.fgValidacion.controls["correo"].value;
     usuario.telefono = this.fgValidacion.controls["telefono"].value;
  
-    this.usuarioService.store(usuario).subscribe((data: UsuarioModelo)=> {
+    this.usuariosService.store(usuario).subscribe((data: UsuarioModelo)=> {
       Swal.fire('Creado correctamente!', '', 'success')
       this.router.navigate(['/admin/get']);
     },

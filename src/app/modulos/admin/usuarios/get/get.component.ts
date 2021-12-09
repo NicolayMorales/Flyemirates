@@ -12,6 +12,10 @@ export class GetComponent implements OnInit {
   constructor(private usuarioService: UsuariosService) { }
   listado: UsuarioModelo[] = []
   //Metodo para traer info y eliminar
+  ngOnInit(): void { this.getAll()
+  }
+
+  
   getAll(){
     this.usuarioService.getAll().subscribe((data: UsuarioModelo[]) => {
       this.listado = data
@@ -35,7 +39,5 @@ export class GetComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void { this.getAll()
-  }
-
+  
 }

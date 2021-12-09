@@ -16,6 +16,7 @@ export class EditComponent implements OnInit {
     private rutasService: RutasService,
     private router: Router,
     private route: ActivatedRoute) { }
+    
     fgValidacion = this.fb.group({
       origen: ['', [Validators.required]],
       destino: ['', [Validators.required]],
@@ -35,12 +36,12 @@ export class EditComponent implements OnInit {
       }
     
     edit(){
-        let rutas = new RutasModelo();
-        rutas.origen= this.fgValidacion.controls["origen"].value;
-        rutas.destino = this.fgValidacion.controls["destino"].value;
-        rutas.tiempo_estimado = this.fgValidacion.controls["tiempo_estimado"].value;
+        let ruta = new RutasModelo();
+        ruta.origen= this.fgValidacion.controls["origen"].value;
+        ruta.destino = this.fgValidacion.controls["destino"].value;
+        ruta.tiempo_estimado = this.fgValidacion.controls["tiempo_estimado"].value;
         
-        this.rutasService.update(rutas).subscribe((data: RutasModelo)=> {
+        this.rutasService.update(ruta).subscribe((data: RutasModelo)=> {
           Swal.fire('Editado Correctamente!', '', 'success')
           this.router.navigate(['/rutas/get']);
         },

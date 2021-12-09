@@ -11,8 +11,8 @@ export class GetComponent implements OnInit {
 
   constructor(private aeropuertosService: AeropuertosService) { }
   listado: AeropuertosModelo[] = []
-  
-  getAll(){
+   //Metodo para traer info y eliminar
+    getAll(){
     this.aeropuertosService.getAll().subscribe((data: AeropuertosModelo[]) => {
       this.listado = data
       console.log(data)
@@ -34,9 +34,6 @@ export class GetComponent implements OnInit {
       }
     })
   }
- 
-
-  
   ngOnInit(): void {this.getAll()
   }
 
