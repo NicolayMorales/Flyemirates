@@ -1,5 +1,6 @@
 <div class="container">
   <h3 class="center-align">Editar Usuario</h3>
+ 
   <form [formGroup]="fgValidacion" class="col s12" (ngSubmit)="edit()">
     <input formControlName="id" type="hidden" class="validate">
     <div class="row">
@@ -25,7 +26,7 @@
         <span class="helper-text" data-error="Correo invalido" data-success="right">Estado</span>
       </div>
     </div>
-
+ 
     <div class="row center-align">
       <button [disabled]="!fgValidacion.valid" class="btn waves-effect waves-light" type="submit" name="action">Enviar
         <i class="material-icons right">send</i>
@@ -33,4 +34,3 @@
     </div>
   </form>
 </div>
-  

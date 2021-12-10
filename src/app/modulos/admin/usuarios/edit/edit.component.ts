@@ -13,20 +13,21 @@ import Swal from 'sweetalert2'
 })
 export class EditComponent implements OnInit {
 
-  fgValidacion = this.fb.group({
-    id: ['', [Validators.required]],
-    nombre: ['', [Validators.required]],
-    apellidos: ['', [Validators.required]],
-    telefono: ['', [Validators.required, Validators.minLength(6)]],
-    correo: ['', [Validators.required, Validators.email]],
-  });
-
-  id: string=''
-
   constructor(private fb: FormBuilder,
-    private usuarioService: UsuariosService,
+    private usuariosService: UsuariosService,
     private router: Router,
     private route: ActivatedRoute) { }
+
+    fgValidacion = this.fb.group({
+      id: ['', [Validators.required]],
+      nombre: ['', [Validators.required]],
+      apellidos: ['', [Validators.required]],
+      telefono: ['', [Validators.required, Validators.minLength(6)]],
+      correo: ['', [Validators.required, Validators.email]],
+    });
+ 
+    id: string=''
+
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params["id"]
@@ -34,7 +35,7 @@ export class EditComponent implements OnInit {
   }
 
   buscarRegistro(id: string): void{
-    this.usuarioService.getWithId(id).subscribe((data: UsuarioModelo) => {
+    this.usuariosService.getWithId(id).subscribe((data: UsuarioModelo) => {
       console.log(data)
       this.fgValidacion.controls["id"].setValue(id)
       this.fgValidacion.controls["nombre"].setValue(data.nombre)
@@ -44,15 +45,15 @@ export class EditComponent implements OnInit {
     })
   }
 
-  edit(): void{
-    let usuarios = new UsuarioModelo();
-    usuarios.id = this.fgValidacion.controls["id"].value;
-    usuarios.nombre = this.fgValidacion.controls["nombre"].value;
-    usuarios.apellidos = this.fgValidacion.controls["apellidos"].value;
-    usuarios.correo = this.fgValidacion.controls["correo"].value;
-    usuarios.telefono = this.fgValidacion.controls["telefono"].value;
-
-    this.usuarioService.update(usuarios).subscribe((data: UsuarioModelo)=> {
+  edit(){
+    let usuario = new UsuarioModelo();
+    usuario.id = this.fgValidacion.controls["id"].value;
+    usuario.nombre = this.fgValidacion.controls["nombre"].value;
+    usuario.apellidos = this.fgValidacion.controls["apellidos"].value;
+    usuario.correo = this.fgValidacion.controls["correo"].value;
+    usuario.telefono = this.fgValidacion.controls["telefono"].value;
+ 
+    this.usuariosService.update(usuario).subscribe((data: UsuarioModelo)=> {
       Swal.fire('Editado Correctamente!', '', 'success')
       this.router.navigate(['/admin/get']);
     },

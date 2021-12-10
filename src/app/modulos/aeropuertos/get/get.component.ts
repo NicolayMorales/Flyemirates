@@ -9,11 +9,14 @@ import Swal from 'sweetalert2'
 })
 export class GetComponent implements OnInit {
 
-  constructor(private aeropuertosService: AeropuertosService) { }
+ constructor(private aeropuertosService: AeropuertosService) { }
   listado: AeropuertosModelo[] = []
    //Metodo para traer info y eliminar
-    getAll(){
-    this.aeropuertosService.getAll().subscribe((data: AeropuertosModelo[]) => {
+  ngOnInit(): void {this.getAll()
+  }    
+
+getAll(){
+   this.aeropuertosService.getAll().subscribe((data: AeropuertosModelo[]) => {
       this.listado = data
       console.log(data)
     })
@@ -24,7 +27,7 @@ export class GetComponent implements OnInit {
     Swal.fire({
       title: '¿Esta seguro de eliminar este registro?',
       showCancelButton: true,
-      confirmButtonText: 'Aceptar',
+      confirmButtonText: 'Acpetar',
     }).then((result) => {
       if (result.isConfirmed) {
         this.aeropuertosService.delete(id).subscribe((data: any) => {
@@ -34,7 +37,6 @@ export class GetComponent implements OnInit {
       }
     })
   }
-  ngOnInit(): void {this.getAll()
-  }
 
+  
 }

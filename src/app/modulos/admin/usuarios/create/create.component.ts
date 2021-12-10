@@ -11,10 +11,10 @@ import Swal from 'sweetalert2'
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
-  usuariosService: any;
+  
 
   constructor(private fb: FormBuilder,
-    private usuarioService: UsuariosService,
+    private usuariosService: UsuariosService,
     private router: Router) { }
 
     fgValidacion = this.fb.group({
@@ -42,5 +42,6 @@ export class CreateComponent implements OnInit {
       alert("Error en el envio");
     })
   }
+
 
 }

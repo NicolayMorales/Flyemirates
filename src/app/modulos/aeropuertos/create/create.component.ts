@@ -10,11 +10,12 @@ import Swal from 'sweetalert2'
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
-  [x: string]: any;
+ 
 
   constructor(private fb: FormBuilder,
     private aeropuertosService: AeropuertosService,
     private router: Router) { }
+
     fgValidacion = this.fb.group({
       nombre: ['', [Validators.required]],
       ciudad: ['', [Validators.required]],
@@ -25,6 +26,7 @@ export class CreateComponent implements OnInit {
       tipo: ['', [Validators.required]],
       
       });
+
   ngOnInit(): void {
   }
   store(){
@@ -36,7 +38,7 @@ export class CreateComponent implements OnInit {
     aeropuerto.coordy = this.fgValidacion.controls["coordy"].value;
     aeropuerto.siglas = this.fgValidacion.controls["siglas"].value;
     aeropuerto.tipo = this.fgValidacion.controls["tipo"].value;
-    this['aeropuertosService'].store(aeropuerto).subscribe((data: AeropuertosModelo)=> {
+   this.aeropuertosService.store(aeropuerto).subscribe((data: AeropuertosModelo)=> {
       Swal.fire('Creado correctamente!', '', 'success')
       this.router.navigate(['/aeropuertos/get']);
     },
@@ -45,4 +47,5 @@ export class CreateComponent implements OnInit {
       alert("Error en el envio");
     })
   }
+
 }

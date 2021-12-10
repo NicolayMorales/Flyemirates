@@ -24,11 +24,11 @@ export class CreateComponent implements OnInit {
   ngOnInit(): void {
   }
   store(){
-    let rutas = new RutasModelo();
-    rutas.origen = this.fgValidacion.controls["origen"].value;
-    rutas.destino = this.fgValidacion.controls["destino"].value;
-    rutas.tiempo_estimado = this.fgValidacion.controls["tiempo_estimado"].value;
-    this.rutasService.store(rutas).subscribe((data: RutasModelo)=> {
+    let ruta = new RutasModelo();
+    ruta.origen = this.fgValidacion.controls["origen"].value;
+    ruta.destino = this.fgValidacion.controls["destino"].value;
+    ruta.tiempo_estimado = this.fgValidacion.controls["tiempo_estimado"].value;
+    this.rutasService.store(ruta).subscribe((data: RutasModelo)=> {
       Swal.fire('Creado correctamente!', '', 'success')
       this.router.navigate(['/rutas/get']);
     },

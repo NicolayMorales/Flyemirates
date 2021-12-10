@@ -3,22 +3,22 @@
     <form [formGroup]="fgValidacion" class="col s12" (ngSubmit)="store()">
       <div class="row">
         <div class="input-field col s6">
-          <input formControlName="feha_inicio" type="date" class="validate">
+          <input formControlName="feha_inicio" type="Date" class="validate">
           <label for="fecha_inicio">Fecha_inicio</label>
         </div>
         <div class="input-field col s6">
-          <input formControlName="hora_inicio" type="time" class="validate">
+          <input formControlName="hora_inicio" type="Time" class="validate">
           <label for="hora_inicio">Hora_inicio</label>
         </div>
         </div>
       <div class="row">
         <div class="input-field col s6">
-            <input formControlName="fecha_fin" type="date" class="validate">
+            <input formControlName="fecha_fin" type="Date" class="validate">
           <label for="fecha_fin">Fecha_fin</label>
         </div>
         
         <div class="input-field col s6">
-            <input formControlName="hora_fin" type="time" class="validate">
+            <input formControlName="hora_fin" type="Time" class="validate">
           <label for="hora_fin">Hora_fin</label>
         </div>
         </div>

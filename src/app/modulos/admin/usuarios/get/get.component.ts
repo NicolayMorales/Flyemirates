@@ -9,7 +9,7 @@ import Swal from 'sweetalert2'
 })
 export class GetComponent implements OnInit {
 
-  constructor(private usuarioService: UsuariosService) { }
+  constructor(private usuariosService: UsuariosService) { }
   listado: UsuarioModelo[] = []
   //Metodo para traer info y eliminar
   ngOnInit(): void { this.getAll()
@@ -17,7 +17,7 @@ export class GetComponent implements OnInit {
 
   
   getAll(){
-    this.usuarioService.getAll().subscribe((data: UsuarioModelo[]) => {
+    this.usuariosService.getAll().subscribe((data: UsuarioModelo[]) => {
       this.listado = data
       console.log(data)
     })
@@ -31,7 +31,7 @@ export class GetComponent implements OnInit {
       confirmButtonText: 'Acpetar',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.usuarioService.delete(id).subscribe((data: any) => {
+        this.usuariosService.delete(id).subscribe((data: any) => {
           Swal.fire('¡Eliminado correctamente!', '', 'success')
           this.getAll();
         })

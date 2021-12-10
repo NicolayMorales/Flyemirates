@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AeropuertosModelo } from 'src/app/modelos/aeropuertos.model';
 import { AeropuertosService } from 'src/app/servicios/aeropuertos.service';
+
 import Swal from 'sweetalert2'
 
 @Component({
@@ -11,7 +12,13 @@ import Swal from 'sweetalert2'
   styleUrls: ['./edit.component.css']
 })
 export class EditComponent implements OnInit {
-  fgValidacion = this.fb.group({
+
+constructor(private fb: FormBuilder,
+    private aeropuertosService: AeropuertosService,
+    private router: Router,
+    private route: ActivatedRoute) { }
+
+ fgValidacion = this.fb.group({
     id: ['', [Validators.required]],
     nombre: ['', [Validators.required]],
     ciudad: ['', [Validators.required]],
@@ -23,18 +30,13 @@ export class EditComponent implements OnInit {
     });
  
     id: string=''
-  AeropuertosService: any;
 
-  constructor(private fb: FormBuilder,
-    private aeropuertosService: AeropuertosService,
-    private router: Router,
-    private route: ActivatedRoute) { }
-    
-    ngOnInit(): void {this.id = this.route.snapshot.params["id"]
+    ngOnInit(): void {
+    this.id = this.route.snapshot.params["id"]
     this.buscarRegistro(this.id);
-}
+  }
 
-       buscarRegistro(id: string){
+buscarRegistro(id: string){
         this.aeropuertosService.getWithId(id).subscribe((data: AeropuertosModelo) => {
           console.log(data)
           this.fgValidacion.controls["id"].setValue(id)
@@ -58,16 +60,15 @@ export class EditComponent implements OnInit {
         aeropuerto.coordy = this.fgValidacion.controls["coordy"].value;
         aeropuerto.siglas = this.fgValidacion.controls["siglas"].value;
         aeropuerto.tipo = this.fgValidacion.controls["tipo"].value; 
-        this.aeropuertosService.update(aeropuerto).subscribe((data: AeropuertosModelo)=> {
-          Swal.fire('Editado Correctamente!', '', 'success')
-          this.router.navigate(['/aeropuerto/get']);
-        },
-        (error: any) => {
-          console.log(error)
-          alert("Error en el envio");
-        })
-      }
-    
-      
-  
+        
+this.aeropuertosService.update(aeropuerto).subscribe((data: AeropuertosModelo)=> {
+      Swal.fire('Editado Correctamente!', '', 'success')
+      this.router.navigate(['/admin/get']);
+    },
+    (error: any) => {
+      console.log(error)
+      alert("Error en el envio");
+    })
+  }
+
 }

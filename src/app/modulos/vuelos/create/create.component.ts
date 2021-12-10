@@ -47,7 +47,7 @@ export class CreateComponent implements OnInit {
     vuelo.hora_fin = this.fgValidacion.controls["hora_fin"].value;
     vuelo.asientos_vendidos = this.fgValidacion.controls["asientos_vendidos"].value;
     vuelo.nombre_piloto = this.fgValidacion.controls["nombre_piloto"].value;
-    vuelo.ruta = this.fgValidacion.controls["rutas"].value;
+    vuelo.ruta = this.fgValidacion.controls["ruta"].value;
     this.vueloService.store(vuelo).subscribe((data: VuelosModelo) => {
       Swal.fire('Creado correctamente!', '', 'success')
       this.router.navigate(['/vuelos/get']);

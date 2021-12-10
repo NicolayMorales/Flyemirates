@@ -1,10 +1,10 @@
 import { Time } from "@angular/common";
 
 export class RutasModelo{
-    id?: String;
-    origen?: String;
+    id?: string;
+    origen?: string;
     destino?: string;
-    tiempo_estimado?: Time;
+    tiempo_estimado?: String;
     isLoggedIn?: boolean = false;
   
   }

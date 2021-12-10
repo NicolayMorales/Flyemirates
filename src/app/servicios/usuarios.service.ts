@@ -34,9 +34,9 @@ export class UsuariosService {
 
   //Actualizar un Usuario
   update(usuario: UsuarioModelo): Observable<UsuarioModelo> {
-    return this.http.put<UsuarioModelo>(`${this.url}/usuarios/${usuario.id}`, {
+    return this.http.patch<UsuarioModelo>(`${this.url}/usuarios/${usuario.id}`, {
       nombre: usuario.nombre,
-      apellido: usuario.apellidos,
+      apellidos: usuario.apellidos,
       telefono: usuario.telefono,
       correo: usuario.correo
     }, {
@@ -45,6 +45,7 @@ export class UsuariosService {
       })
     });
   }
+
 //Eliminar un Usuario
 delete(id: string): Observable<UsuarioModelo[]>{
   return this.http.delete<UsuarioModelo[]>(`${this.url}/usuarios/${id}`, {
@@ -61,6 +62,4 @@ getWithId(id: string): Observable<UsuarioModelo>{
     })
   })
 }
-
-  
-  }
+}
