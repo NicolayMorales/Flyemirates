@@ -5,8 +5,8 @@ export class AeropuertosModelo{
     pais?: string;
     coordx?: string;
     coordy?: string;
-    siglas?:string;
-    tipo?:string;
+    siglas?: string;
+    tipo?: string
       
   }
   

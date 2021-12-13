@@ -11,8 +11,12 @@ export class GetComponent implements OnInit {
 
   constructor(private vuelosService: VuelosService) { }
   listado: VuelosModelo[] = []
+  //Metodo para traer info y eliminar
+  ngOnInit(): void { this.getAll()
+  }
+
   
-  getAll(){
+getAll(){
     this.vuelosService.getAll().subscribe((data: VuelosModelo[]) => {
       this.listado = data
       console.log(data)
@@ -34,10 +38,6 @@ export class GetComponent implements OnInit {
       }
     })
   }
- 
 
   
-  ngOnInit(): void {this.getAll()
-  }
-
 }

@@ -36,8 +36,12 @@
         </div>
       <div class="row">
         <div class="input-field col s6">
-           <input formControlName="ruta" type="text" class="validate">
-          <label for="ruta">Ruta</label>
+          
+          <label class="active" for="ruta">Ruta</label>
+          <select class="browser-default" formControlName="ruta" >
+            
+            <option *ngFor="let estacion of listadoRutas" value="{{estacion.origen}} - {{estacion.destino}}">{{estacion.origen}} - {{estacion.destino}}</option>
+          </select>
           </div>
         </div>
        

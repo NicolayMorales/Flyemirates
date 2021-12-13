@@ -20,15 +20,15 @@
         <label class="active" for="pais">Pais</label>
         </div>
         <div class="input-field col s12">
-        <input formControlName="coordx" type="text" class="validate">
-        <label class="active" for="coordx">Coordx</label>
+        <input formControlName="coordx" type="number" class="validate">
+        <label class="active" for="coordx">Coordenadax</label>
       </div>
       </div>
      
         <div class="row"> 
         <div class="input-field col s12">
-        <input formControlName="coordy" type="text" class="validate">
-        <label class="active" for="coordy">Coordy</label>
+        <input formControlName="coordy" type="number" class="validate">
+        <label class="active" for="coordy">Coordenaday</label>
       </div>
         <div class="input-field col s12">
         <input formControlName="siglas" type="text" class="validate">
@@ -42,9 +42,10 @@
       </div>
     </div>   
       <div class="row center-align">
-      <button [disabled]="!fgValidacion.valid" class="btn waves-effect waves-light" type="submit" name="action">Enviar
-        <i class="material-icons right">send</i>
-      </button>
-    </div>
-  </form>
+            <button [disabled]="!fgValidacion.valid" class="btn waves-effect waves-light" type="submit"
+                name="action">Enviar
+                <i class="material-icons right">send</i>
+            </button>
+        </div>
+    </form>
 </div>

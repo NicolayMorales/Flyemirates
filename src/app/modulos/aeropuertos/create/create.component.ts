@@ -23,7 +23,7 @@ export class CreateComponent implements OnInit {
       coordx: ['', [Validators.required]],
       coordy: ['', [Validators.required]],
       siglas: ['', [Validators.required]],
-      tipo: ['', [Validators.required]],
+      tipo: ['', [Validators.required]]
       
       });
 
@@ -38,7 +38,8 @@ export class CreateComponent implements OnInit {
     aeropuerto.coordy = this.fgValidacion.controls["coordy"].value;
     aeropuerto.siglas = this.fgValidacion.controls["siglas"].value;
     aeropuerto.tipo = this.fgValidacion.controls["tipo"].value;
-   this.aeropuertosService.store(aeropuerto).subscribe((data: AeropuertosModelo)=> {
+   
+    this.aeropuertosService.store(aeropuerto).subscribe((data: AeropuertosModelo)=> {
       Swal.fire('Creado correctamente!', '', 'success')
       this.router.navigate(['/aeropuertos/get']);
     },
@@ -47,5 +48,6 @@ export class CreateComponent implements OnInit {
       alert("Error en el envio");
     })
   }
+
 
 }

@@ -16,6 +16,7 @@ export class GetComponent implements OnInit {
   }
 
 
+  
   getAll(){
     this.rutasService.getAll().subscribe((data: RutasModelo[]) => {
       this.listado = data
@@ -39,5 +40,4 @@ export class GetComponent implements OnInit {
     })
   }
 
-  
 }

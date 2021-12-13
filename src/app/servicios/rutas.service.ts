@@ -19,8 +19,12 @@ export class RutasService {
       origen: ruta.origen,
       destino: ruta.destino,
       tiempo_estimado: ruta.tiempo_estimado
+    },{
+      headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.token}`
+      })
     });
-  }
+    }
 
 //Listar Rutas
 getAll(): Observable<RutasModelo[]>{
@@ -33,8 +37,8 @@ getAll(): Observable<RutasModelo[]>{
 
 //Actualizar un Rutas
 update(ruta: RutasModelo): Observable<RutasModelo> {
-  return this.http.put<RutasModelo>(`${this.url}/rutas/${ruta.id}`, {
-      id: ruta.id,
+  return this.http.patch<RutasModelo>(`${this.url}/rutas/${ruta.id}`, {
+      //id: ruta.id,
       origen: ruta.origen,
       destino: ruta.destino,
       tiempo_estimado: ruta.tiempo_estimado

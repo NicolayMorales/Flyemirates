@@ -11,9 +11,9 @@ export class GetComponent implements OnInit {
 
  constructor(private aeropuertosService: AeropuertosService) { }
   listado: AeropuertosModelo[] = []
-   //Metodo para traer info y eliminar
-  ngOnInit(): void {this.getAll()
-  }    
+ //Metodo para traer info y eliminar
+ ngOnInit(): void {this.getAll()
+ }     
 
 getAll(){
    this.aeropuertosService.getAll().subscribe((data: AeropuertosModelo[]) => {
@@ -27,7 +27,7 @@ getAll(){
     Swal.fire({
       title: '¿Esta seguro de eliminar este registro?',
       showCancelButton: true,
-      confirmButtonText: 'Acpetar',
+      confirmButtonText: 'Aceptar',
     }).then((result) => {
       if (result.isConfirmed) {
         this.aeropuertosService.delete(id).subscribe((data: any) => {
@@ -37,6 +37,6 @@ getAll(){
       }
     })
   }
+   
 
-  
 }

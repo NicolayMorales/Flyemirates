@@ -3,7 +3,6 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AeropuertosModelo } from 'src/app/modelos/aeropuertos.model';
 import { AeropuertosService } from 'src/app/servicios/aeropuertos.service';
-
 import Swal from 'sweetalert2'
 
 @Component({
@@ -12,6 +11,7 @@ import Swal from 'sweetalert2'
   styleUrls: ['./edit.component.css']
 })
 export class EditComponent implements OnInit {
+
 
 constructor(private fb: FormBuilder,
     private aeropuertosService: AeropuertosService,
@@ -26,16 +26,16 @@ constructor(private fb: FormBuilder,
     coordx: ['', [Validators.required]],
     coordy: ['', [Validators.required]],
     siglas: ['', [Validators.required]],
-    tipo: ['', [Validators.required]],
+    tipo: ['', [Validators.required]]
     });
  
     id: string=''
 
+   
     ngOnInit(): void {
-    this.id = this.route.snapshot.params["id"]
-    this.buscarRegistro(this.id);
-  }
-
+      this.id = this.route.snapshot.params["id"]
+      this.buscarRegistro(this.id);
+    }
 buscarRegistro(id: string){
         this.aeropuertosService.getWithId(id).subscribe((data: AeropuertosModelo) => {
           console.log(data)
@@ -63,12 +63,14 @@ buscarRegistro(id: string){
         
 this.aeropuertosService.update(aeropuerto).subscribe((data: AeropuertosModelo)=> {
       Swal.fire('Editado Correctamente!', '', 'success')
-      this.router.navigate(['/admin/get']);
+      this.router.navigate(['/aeropuertos/get']);
     },
     (error: any) => {
       console.log(error)
       alert("Error en el envio");
     })
   }
+
+  
 
 }
